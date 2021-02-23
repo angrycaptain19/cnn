@@ -60,8 +60,7 @@ class SimpleCNN(nn.Module):
         conv3 = self.layer3(conv2)
         add_conv1 = self.add_layer1(conv3)
         fc_input = add_conv1.view(-1, add_conv1.size(0))
-        fc_out = self.layer4(fc_input)
-        return fc_out
+        return self.layer4(fc_input)
 
 model = SimpleCNN()
 criterion = torch.nn.CrossEntropyLoss()
