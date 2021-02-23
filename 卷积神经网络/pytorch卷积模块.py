@@ -42,8 +42,7 @@ class SimpleCNN(nn.Module):
         conv2 = self.layer2(conv1)
         conv3 = self.layer3(conv2)
         fc_input = conv3.view(conv3.size(0), -1)
-        fc_out = self.layer4(fc_input)
-        return fc_out
+        return self.layer4(fc_input)
 
 model = SimpleCNN()
 print(model)

@@ -41,8 +41,7 @@ class SimpleCNN(nn.Module):
     def forward(self, x):
         conv1 = self.layer1(x)
         fc_input = conv1.view(-1, conv1.size(0))
-        fc_out = self.layer4(fc_input)
-        return fc_out
+        return self.layer4(fc_input)
 
 model = SimpleCNN()
 criterion = torch.nn.CrossEntropyLoss()
@@ -51,7 +50,7 @@ print(model)
 
 #study
 num_epochs = 5
-for epoch in range(num_epochs):
+for _ in range(num_epochs):
     for idx, (images, labels) in enumerate(train_loader):
         print('images.size: ', images.size())
         # print('images:',images)

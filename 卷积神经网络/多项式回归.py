@@ -38,14 +38,9 @@ class poly_model(nn.Module):
         self.poly = nn.Linear(3, 1)
 
     def forward(self, x):
-        out = self.poly(x)
-        return out
+        return self.poly(x)
 
-if torch.cuda.is_available():
-    model = poly_model().cuda()
-else:
-    model = poly_model()
-
+model = poly_model().cuda() if torch.cuda.is_available() else poly_model()
 criterion = nn.MSELoss()
 optimizer = optim.SGD(model.parameters(), lr=1e-3)
 
